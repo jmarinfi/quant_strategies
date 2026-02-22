@@ -8,5 +8,7 @@ dependencies = [
     "ccxt>=4.5.38",
     "jupyterlab>=4.5.4",
     "matplotlib>=3.10.8",
+    "optuna>=4.7.0",
     "pandas>=3.0.0",
+    "requests>=2.32.5",
 ]
