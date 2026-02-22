@@ -12,3 +12,4 @@ wheels/
 **.png
 **.csv
 **.ipynb_checkpoints/
+logs/

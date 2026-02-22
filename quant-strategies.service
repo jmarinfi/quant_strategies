@@ -7,8 +7,9 @@ Type=simple
 User=joan
 Group=joan
 WorkingDirectory=/home/joan/projects/quant_strategies
+Environment="PYTHONUNBUFFERED=1"
 # Environment path can be added if needed, but uv run handles the venv
-ExecStart=/home/joan/.local/bin/uv run python arbitrage.py
+ExecStart=/home/joan/.local/bin/uv run arbitrage.py
 Restart=always
 RestartSec=10
 # Logging
