@@ -1,0 +1,19 @@
+[Unit]
+Description=Quantitative Trading Strategy Bot
+After=network.target
+
+[Service]
+Type=simple
+User=joan
+Group=joan
+WorkingDirectory=/home/joan/projects/quant_strategies
+# Environment path can be added if needed, but uv run handles the venv
+ExecStart=/home/joan/.local/bin/uv run python arbitrage.py
+Restart=always
+RestartSec=10
+# Logging
+StandardOutput=append:/home/joan/projects/quant_strategies/logs/service.log
+StandardError=append:/home/joan/projects/quant_strategies/logs/service.err
+
+[Install]
+WantedBy=multi-user.target
