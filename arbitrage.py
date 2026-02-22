@@ -13,7 +13,9 @@ hyperliquid = ccxt.hyperliquid()
 
 def esperar_cierre_vela(timeframe: int):
     ahora = datetime.now()
-    proxima_ejecucion = ahora + timedelta(minutes=timeframe)
+    minutos_faltantes = timeframe - (ahora.minute % timeframe)
+
+    proxima_ejecucion = ahora + timedelta(minutes=minutos_faltantes)
     proxima_ejecucion = proxima_ejecucion.replace(second=3, microsecond=0)
 
     segundos_a_esperar = (proxima_ejecucion - ahora).total_seconds()
@@ -92,10 +94,10 @@ def send_webhook(url: str, action: str, uuid: str) -> bool:
 
 
 def live_arbitrage_strategy():
-    timeframe = 1
-    window = 15
+    timeframe = 15
+    window = 12
     zscore_umbral = 1.5
-    url_bot = "http://192.168.1.132:7503/trade_signal"
+    url_bot = "http://localhost:7503/trade_signal"
     uuid_long_hyperliquid = "644a0fd2-7f99-476b-8326-d9dd374c6fdb"
     uuid_short_hyperliquid = "c1b2f3b5-315c-4f2f-846c-0881716818fd"
     uuid_long_bitget = "0da348bf-db0e-4096-b7f3-93b14376def7"
